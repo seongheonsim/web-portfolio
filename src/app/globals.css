@@ -28,3 +28,21 @@ body {
   font-family: var(--font-sans), 'Pretendard', -apple-system,
     BlinkMacSystemFont, sans-serif;
 }
+
+.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: transparent !important;
+  color: black !important;
+}
+
+/* Mermaid 다이어그램 텍스트 컬러 개선 */
+.mermaid-wrapper text,
+.mermaid-wrapper span,
+.mermaid-wrapper .messageText,
+.mermaid-wrapper .labelText,
+.mermaid-wrapper .actor {
+  fill: #1e293b !important; /* 다크 그레이 계열로 가독성 확보 */
+  color: #1e293b !important;
+  font-weight: 500;
+}
+
+

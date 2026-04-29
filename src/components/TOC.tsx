@@ -6,21 +6,35 @@ const TOC = () => {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-80px 0px -80% 0px' }
-    );
+    const handleScroll = () => {
+      // id가 있는 h2 태그만 선택 (부제목 h2는 무시)
+      const headings = Array.from(document.querySelectorAll('h2[id]'));
+      if (headings.length === 0) return;
 
-    const headings = document.querySelectorAll('h2');
-    headings.forEach((elem) => observer.observe(elem));
+      let currentId = headings[0].id;
 
-    return () => observer.disconnect();
+      for (const heading of headings) {
+        // 화면 상단 기준 150px 위로 올라가면 해당 섹션으로 간주
+        if (heading.getBoundingClientRect().top < 150) {
+          currentId = heading.id;
+        }
+      }
+
+      // 페이지의 맨 아래에 도달했는지 확인 (10px 오차 허용)
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
+
+      if (isBottom) {
+        currentId = headings[headings.length - 1].id;
+      }
+
+      setActiveId(currentId);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // 초기 진입 시 활성화
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {

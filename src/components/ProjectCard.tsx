@@ -11,9 +11,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <div className="mb-4 text-sm font-medium text-muted">
         {project.period}
       </div>
-      <h3 className="mb-3 text-xl font-bold leading-snug text-foreground transition-colors group-hover:text-accent">
+      <h3 className="mb-1 text-xl font-bold leading-snug text-foreground transition-colors group-hover:text-accent">
         {project.title}
       </h3>
+      <p className="mb-4 text-sm font-medium text-accent">
+        {project.subtitle}
+      </p>
       <p className="mb-6 line-clamp-3 leading-relaxed text-muted">
         {project.summary}
       </p>

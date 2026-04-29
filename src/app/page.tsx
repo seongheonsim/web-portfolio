@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import About from '@/components/About';
 import Experience from '@/components/Experience';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/data/projects';
@@ -6,8 +7,9 @@ import { projects } from '@/data/projects';
 const Home = () => {
   return (
     <main className="flex-1">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className="mx-auto max-w-5xl px-6">
         <Hero />
+        <About />
         <Experience />
         <section id="projects" className="border-t border-border py-16 scroll-mt-20">
           <h2 className="mb-8 text-2xl font-bold tracking-tight text-foreground">

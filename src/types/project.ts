@@ -1,6 +1,7 @@
 export interface Project {
   slug: string;
   title: string;
+  subtitle: string; // 카드 및 상세 페이지에 표시될 소제목
   period: string;
   tags: string[];
   summary: string; // 카드에 보여질 짧은 요약

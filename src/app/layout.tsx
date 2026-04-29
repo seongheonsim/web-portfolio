@@ -8,9 +8,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'SeongHeon Sim — Backend Developer Portfolio',
-  description:
-    '결제 도메인의 신뢰성을 만들어 온 백엔드 개발자 심성헌의 기술 포트폴리오',
+  title: '심성헌 | Backend Developer',
+  description: '결제 도메인의 신뢰성을 구축하는 백엔드 엔지니어 심성헌의 포트폴리오입니다.',
 };
 
 import Header from '@/components/Header';
